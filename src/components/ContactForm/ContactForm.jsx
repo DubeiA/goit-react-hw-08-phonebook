@@ -2,6 +2,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getContacts } from 'redux/contacts/selectors';
 import { addContact } from 'redux/contacts/contactOperation';
 import css from '../ContactForm/ContactForm.module.css';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 
 export function ContactForm() {
   const dispatch = useDispatch();
@@ -17,11 +19,6 @@ export function ContactForm() {
       return;
     }
 
-    console.log({
-      name: name.value,
-      number: number.value,
-    });
-
     dispatch(
       addContact({
         name: name.value,
@@ -33,11 +30,12 @@ export function ContactForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label className={css.labelName}>
-        <span className={css.spanName}>Name</span>
-        <input
-          className={css.imputName}
+    <form className={css.container} onSubmit={handleSubmit}>
+      <div className={css.form}>
+        <TextField
+          id="outlined-basic"
+          label="Name"
+          variant="outlined"
           type="text"
           name="name"
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -45,22 +43,21 @@ export function ContactForm() {
           required
         />
 
-        <label className={css.labelNumber}>
-          <span className={css.spanNumber}>Number</span>
+        <TextField
+          id="outlined-basic"
+          label="Number"
+          variant="outlined"
+          type="tel"
+          name="number"
+          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+          required
+        />
 
-          <input
-            className={css.imputName}
-            type="tel"
-            name="number"
-            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-            required
-          />
-        </label>
-        <button type="submit" className={css.buttonSubmit}>
+        <Button type="submit" variant="contained" disableElevation>
           Add contact
-        </button>
-      </label>
+        </Button>
+      </div>
     </form>
   );
 }
