@@ -1,19 +1,23 @@
-import { ContactForm } from './ContactForm/ContactForm';
-import { Filter } from './Filter/Filter';
-import { ContactList } from './ContactList/ContactList';
+import { Routes, Route } from 'react-router-dom';
+import { Layout } from './Layout/Layout';
+import { lazy } from 'react';
+
+const Home = lazy(() => import('../pages/Home'));
+const Contacts = lazy(() => import('../pages/Contacts'));
+const Login = lazy(() => import('../pages/LogIn'));
+const RegisterPage = lazy(() => import('../pages/Registration'));
 
 export function App() {
   return (
     <div>
-      <h2>Phonebook</h2>
-
-      <ContactForm />
-
-      <h3>Contacts</h3>
-
-      <Filter />
-
-      <ContactList />
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/contacts" element={<Contacts />} />
+        </Route>
+      </Routes>
     </div>
   );
 }

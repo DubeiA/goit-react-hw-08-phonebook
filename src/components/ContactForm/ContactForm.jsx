@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { getContacts } from 'redux/selectors';
-import { addContact } from 'redux/contactOperation';
+import { getContacts } from 'redux/contacts/selectors';
+import { addContact } from 'redux/contacts/contactOperation';
 import css from '../ContactForm/ContactForm.module.css';
 import { nanoid } from '@reduxjs/toolkit';
 
