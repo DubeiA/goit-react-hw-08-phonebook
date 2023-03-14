@@ -11,6 +11,8 @@ import {
   getIsLoading,
   getError,
 } from '../../redux/contacts/selectors';
+import Button from '@mui/material/Button';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 export const ContactList = () => {
   const contacts = useSelector(getContacts);
@@ -37,14 +39,18 @@ export const ContactList = () => {
           {visibleContacts.map(contact => {
             return (
               <li className={css.item} key={contact.id}>
-                {contact.name} : {contact.number}
-                <button
-                  className={css.item__button}
+                <span>
+                  {contact.name} : {contact.number}
+                </span>
+                <Button
+                  variant="outlined"
+                  startIcon={<DeleteIcon />}
+                  // className={css.item__button}
                   onClick={() => dispatch(deleteContact(contact.id))}
                   disabled={isLoading}
                 >
                   Видалити
-                </button>
+                </Button>
               </li>
             );
           })}
