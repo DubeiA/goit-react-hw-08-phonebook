@@ -5,12 +5,12 @@ const initialState = {
   user: { name: null, email: null },
   token: null,
   isLoggedIn: false,
+  isRefreshing: false,
 };
 
 const authSlice = createSlice({
   name: 'auth',
   initialState,
-  isRefreshing: false,
   extraReducers: {
     [register.fulfilled](state, action) {
       state.user = action.payload.user;
@@ -27,9 +27,16 @@ const authSlice = createSlice({
       state.token = null;
       state.isLoggedIn = false;
     },
+    [currentPage.pending](state) {
+      state.isRefreshing = true;
+    },
     [currentPage.fulfilled](state, action) {
       state.user = action.payload;
+      state.isRefreshing = false;
       state.isLoggedIn = true;
+    },
+    [currentPage.rejected](state) {
+      state.isRefreshing = false;
     },
   },
 });
