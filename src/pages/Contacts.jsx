@@ -1,5 +1,5 @@
 import { ContactForm } from '../components/ContactForm/ContactForm';
-// import { ContactList } from '../components/ContactList/ContactList';
+import { ContactList } from '../components/ContactList/ContactList';
 import { Filter } from '../components/Filter/Filter';
 
 export default function Home() {
@@ -7,7 +7,7 @@ export default function Home() {
     <div>
       <ContactForm />
       <Filter />
-      {/* <ContactList /> */}
+      <ContactList />
     </div>
   );
 }
