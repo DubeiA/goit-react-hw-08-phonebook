@@ -31,7 +31,7 @@ export const ContactList = () => {
   }, [dispatch]);
 
   return (
-    <>
+    <div className={css.container}>
       {isLoading && <p>Loading contacts...</p>}
       {error && <p>{error}</p>}
       {contacts.length > 0 && (
@@ -56,6 +56,6 @@ export const ContactList = () => {
           })}
         </ul>
       )}
-    </>
+    </div>
   );
 };

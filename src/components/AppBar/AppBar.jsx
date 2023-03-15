@@ -3,20 +3,21 @@ import { UserMenu } from '../UserMenu/UserMenu';
 import { AuthNav } from '../AuthNav/AuthNav';
 import { useSelector } from 'react-redux';
 import { selectIsLoggedIn } from '../../redux/auth/selectors';
-// import css from './AppBar.module.css';
+import Container from '@mui/material/Container';
+import Toolbar from '@mui/material/Toolbar';
+import AppBar from '@mui/material/AppBar';
 
-export const AppBar = () => {
+export const AppBarHeader = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
   return (
-    <header
-      style={{
-        display: 'flex',
-        justifyContent: 'space-around',
-      }}
-    >
-      <Navigation />
-      {isLoggedIn ? <UserMenu /> : <AuthNav />}
-    </header>
+    <AppBar position="static">
+      <Container>
+        <Toolbar disableGutters sx={{ justifyContent: 'space-between' }}>
+          <Navigation />
+          {isLoggedIn ? <UserMenu /> : <AuthNav />}
+        </Toolbar>
+      </Container>
+    </AppBar>
   );
 };

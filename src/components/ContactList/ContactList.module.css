@@ -1,7 +1,7 @@
 .list {
   width: 400px;
   margin-left: 24px;
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   gap: 10px;
   list-style: none;
@@ -31,4 +31,10 @@
 
 .item__button:hover {
   background-color: blue;
+}
+
+.container {
+  text-align: center;
+
+  margin-top: 20px;
 }
