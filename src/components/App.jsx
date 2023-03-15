@@ -22,7 +22,7 @@ export function App() {
   }, [dispatch]);
 
   return isRefreshing ? (
-    'Fetch user data...'
+    <p style={{ textAlign: 'center' }}>Loading ...</p>
   ) : (
     <Routes>
       <Route path="/" element={<Layout />}>
